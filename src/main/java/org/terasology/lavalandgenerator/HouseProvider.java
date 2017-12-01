@@ -38,7 +38,7 @@ public class HouseProvider implements FacetProvider {
             Region3i wr = facet.getWorldRegion();
 
             if (wr.encompasses(position.getX(), surfaceHeight, position.getY())
-                    && noise.noise(position.getX(), position.getY()) > 0.99
+                    && noise.noise(position.getX(), position.getY()) > 0.998
                     && position.getX() > (wr.maxX()+wr.minX())/2 - 5
                     && position.getX() < (wr.maxX()+wr.minX())/2 + 5
                     && position.getY() > (wr.maxZ()+wr.minZ())/2 - 5
