@@ -28,11 +28,13 @@ import org.terasology.world.generation.facets.SurfaceHeightFacet;
 public class ThirstyWorldRasterizer implements WorldRasterizer {
     private Block hardStone;
     private Block deadBush;
+    private Block lava;
 
     @Override
     public void initialize() {
         hardStone = CoreRegistry.get(BlockManager.class).getBlock("Core:HardStone");
         deadBush = CoreRegistry.get(BlockManager.class).getBlock("Core:DeadBush");
+        lava = CoreRegistry.get(BlockManager.class).getBlock("Core:Lava");
     }
 
     @Override
@@ -43,7 +45,21 @@ public class ThirstyWorldRasterizer implements WorldRasterizer {
             if (position.y < surfaceHeight) {
                 chunk.setBlock(ChunkMath.calcBlockPos(position), hardStone);
                 java.util.Random rand = new java.util.Random();
-                if (rand.nextInt(100) >= 99) {
+                int random = rand.nextInt(10000)+1;
+                if (random >= 10000) {
+                    // make some lava fountains
+                    int lavaHeight = rand.nextInt(10)+20;
+                    int lavaWidth = lavaHeight % 5 + 1;
+                    for (int i = 0; i < lavaHeight; i++) {
+                        for (int j = 0; j < lavaWidth; j++) {
+                            chunk.setBlock(ChunkMath.calcBlockPos(position.addX(1)), lava);
+                            chunk.setBlock(ChunkMath.calcBlockPos(position.addZ(1)), lava);
+                        }
+                        position.addX(-lavaWidth).addZ(-lavaWidth);
+                        position.addY(1);
+                    }
+                }
+                else if (random >= 9900) {
                     chunk.setBlock(ChunkMath.calcBlockPos(position.addY(1)), deadBush);
                 }
             }
