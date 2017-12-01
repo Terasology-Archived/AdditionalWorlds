@@ -20,9 +20,9 @@ import org.terasology.utilities.procedural.SimplexNoise;
 import org.terasology.world.generation.*;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
-@Produces(HouseFacet.class)
+@Produces(WaterBoxFacet.class)
 @Requires(@Facet(value = SurfaceHeightFacet.class, border = @FacetBorder(sides = 8)))
-public class HouseProvider implements FacetProvider {
+public class WaterBoxProvider implements FacetProvider {
 
     private SimplexNoise noise;
 
@@ -34,8 +34,8 @@ public class HouseProvider implements FacetProvider {
     @Override
     public void process(GeneratingRegion region) {
 
-        Border3D border = region.getBorderForFacet(HouseFacet.class).extendBy(0, 8, 4);
-        HouseFacet facet = new HouseFacet(region.getRegion(), border);
+        Border3D border = region.getBorderForFacet(WaterBoxFacet.class).extendBy(0, 8, 4);
+        WaterBoxFacet facet = new WaterBoxFacet(region.getRegion(), border);
         SurfaceHeightFacet surfaceHeightFacet = region.getRegionFacet(SurfaceHeightFacet.class);
 
         for (BaseVector2i position : surfaceHeightFacet.getWorldRegion().contents()) {
@@ -43,10 +43,10 @@ public class HouseProvider implements FacetProvider {
 
             if (facet.getWorldRegion().encompasses(position.getX(), surfaceHeight, position.getY())
                     && noise.noise(position.getX(), position.getY()) > 0.99) {
-                facet.setWorld(position.getX(), surfaceHeight, position.getY(), new House());
+                facet.setWorld(position.getX(), surfaceHeight, position.getY(), new WaterBox());
             }
         }
 
-        region.setRegionFacet(HouseFacet.class, facet);
+        region.setRegionFacet(WaterBoxFacet.class, facet);
     }
 }

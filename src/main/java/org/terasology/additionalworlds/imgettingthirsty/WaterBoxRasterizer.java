@@ -28,21 +28,21 @@ import org.terasology.world.generation.WorldRasterizer;
 
 import java.util.Map.Entry;
 
-public class HouseRasterizer implements WorldRasterizer {
+public class WaterBoxRasterizer implements WorldRasterizer {
     Block glass;
     Block water;
 
     @Override
     public void initialize() {
         glass = CoreRegistry.get(BlockManager.class).getBlock("Core:Glass");
-        water = CoreRegistry.get(BlockManager.class).getBlock("Core:Water");
+        water = CoreRegistry.get(BlockManager.class).getBlock("AdditionalWorlds:waterSides");
     }
 
     @Override
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
-        HouseFacet houseFacet = chunkRegion.getFacet(HouseFacet.class);
+        WaterBoxFacet waterBoxFacet = chunkRegion.getFacet(WaterBoxFacet.class);
 
-        for (Entry<BaseVector3i, House> entry : houseFacet.getWorldEntries().entrySet()) {
+        for (Entry<BaseVector3i, WaterBox> entry : waterBoxFacet.getWorldEntries().entrySet()) {
             // create a couple of 3d regions to help iterate through the cube shape, inside and out
             Vector3i centerHousePosition = new Vector3i(entry.getKey());
             int extent = entry.getValue().getExtent();

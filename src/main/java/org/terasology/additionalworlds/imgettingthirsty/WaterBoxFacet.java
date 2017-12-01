@@ -15,8 +15,13 @@
  */
 package org.terasology.additionalworlds.imgettingthirsty;
 
-public class House {
-    public int getExtent() {
-        return 4;
+import org.terasology.math.Region3i;
+import org.terasology.world.generation.Border3D;
+import org.terasology.world.generation.facets.base.SparseObjectFacet3D;
+
+public class WaterBoxFacet extends SparseObjectFacet3D<WaterBox> {
+
+    public WaterBoxFacet(Region3i targetRegion, Border3D border) {
+        super(targetRegion, border);
     }
 }
