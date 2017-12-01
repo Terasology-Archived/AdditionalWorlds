@@ -27,10 +27,12 @@ import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 public class ThirstyWorldRasterizer implements WorldRasterizer {
     private Block hardStone;
+    private Block deadBush;
 
     @Override
     public void initialize() {
         hardStone = CoreRegistry.get(BlockManager.class).getBlock("Core:HardStone");
+        deadBush = CoreRegistry.get(BlockManager.class).getBlock("Core:DeadBush");
     }
 
     @Override
@@ -40,6 +42,10 @@ public class ThirstyWorldRasterizer implements WorldRasterizer {
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
             if (position.y < surfaceHeight) {
                 chunk.setBlock(ChunkMath.calcBlockPos(position), hardStone);
+                java.util.Random rand = new java.util.Random();
+                if (rand.nextInt(100) >= 99) {
+                    chunk.setBlock(ChunkMath.calcBlockPos(position.addY(1)), deadBush);
+                }
             }
         }
     }
