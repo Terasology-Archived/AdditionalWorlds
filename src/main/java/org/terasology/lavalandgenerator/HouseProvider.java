@@ -1,4 +1,5 @@
 package org.terasology.lavalandgenerator;
+import org.terasology.math.Region3i;
 import org.terasology.math.geom.BaseVector2i;
 import org.terasology.utilities.procedural.Noise;
 import org.terasology.utilities.procedural.SimplexNoise;
@@ -34,9 +35,18 @@ public class HouseProvider implements FacetProvider {
 
          for (BaseVector2i position : surfaceHeightFacet.getWorldRegion().contents()) {
             int surfaceHeight = (int) surfaceHeightFacet.getWorld(position);
+            Region3i wr = facet.getWorldRegion();
 
-            if (facet.getWorldRegion().encompasses(position.getX(), surfaceHeight, position.getY())
-                    && noise.noise(position.getX(), position.getY()) > 0.99) {
+            if (wr.encompasses(position.getX(), surfaceHeight, position.getY())
+                    && noise.noise(position.getX(), position.getY()) > 0.99
+                    && position.getX() > (wr.maxX()+wr.minX())/2 - 5
+                    && position.getX() < (wr.maxX()+wr.minX())/2 + 5
+                    && position.getY() > (wr.maxZ()+wr.minZ())/2 - 5
+                    && position.getY() < (wr.maxZ()+wr.minZ())/2 + 5
+                    && surfaceHeight < (wr.maxY()+wr.minY())/2 + 5
+                    && surfaceHeight < (wr.maxY()+wr.minY())/2 + 5
+                    && surfaceHeight > 15
+                    ) {
                 facet.setWorld(position.getX(), surfaceHeight, position.getY(), true);
             }
         }
