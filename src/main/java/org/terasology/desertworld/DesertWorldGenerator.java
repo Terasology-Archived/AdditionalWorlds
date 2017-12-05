@@ -24,7 +24,9 @@ public class DesertWorldGenerator extends BaseFacetedWorldGenerator {
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
                 //.addProvider(new LakesProvider())
+                .addProvider(new CactusProvider())
+                .addRasterizer(new CactusRasterizer())
                 .addRasterizer(new DesertWorldRasterizer());
-        //.addRasterizer(new LakesRasterizer());
+        // .addRasterizer(new LakesRasterizer());
     }
 }

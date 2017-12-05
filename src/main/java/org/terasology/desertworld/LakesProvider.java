@@ -18,7 +18,7 @@ import org.terasology.world.generation.facets.SurfaceHeightFacet;
 import org.terasology.world.generator.plugin.RegisterPlugin;
 
 @RegisterPlugin
-@Requires(@Facet(value = SurfaceHeightFacet.class, border = @FacetBorder(bottom = 1, sides = 11)))
+@Requires(@Facet(value = SurfaceHeightFacet.class, border = @FacetBorder(bottom = 16, sides = 16, top = 16)))
 @Produces(LakeFacet.class)
 public class LakesProvider implements FacetProviderPlugin {
 
@@ -31,7 +31,7 @@ public class LakesProvider implements FacetProviderPlugin {
 
     @Override
     public void process(GeneratingRegion region) {
-        Border3D border = region.getBorderForFacet(SurfaceHeightFacet.class);
+        Border3D border = region.getBorderForFacet(LakeFacet.class);
         LakeFacet facet = new LakeFacet(region.getRegion(), border);
         float lakeDepth = 10;
         // loop through every position on our 2d array

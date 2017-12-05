@@ -27,19 +27,20 @@ public class LakesRasterizer implements WorldRasterizerPlugin {
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
         SeaLevelFacet seaLevelFacet = chunkRegion.getFacet(SeaLevelFacet.class);
+
         int seaLevel = seaLevelFacet.getSeaLevel();
         Vector3i[] neighbors = new Vector3i[4];
         // Make the lake
         for (Vector3i position : chunkRegion.getRegion()) {
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
 
-            if (position.y < seaLevel - 9 && position.y > surfaceHeight) {
+            if (position.y < seaLevel && position.y > surfaceHeight) {
                 chunk.setBlock(ChunkMath.calcBlockPos(position), water);
 
                 neighbors[0] = position.addX(1);
                 neighbors[1] = position.addX(-2);
-                neighbors[2] = position.addX(1).addY(1);
-                neighbors[3] = position.addY(-2);
+                neighbors[2] = position.addX(1).addZ(1);
+                neighbors[3] = position.addZ(-2);
 
                 for (Vector3i block : neighbors) {
                     if (!chunk.getBlock(block).getURI().toString().equals("engine:air")) {
