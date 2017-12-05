@@ -23,7 +23,7 @@ public class CactusRasterizer implements WorldRasterizer {
 
         for (Vector3i block : cactusFacet.getWorldRegion()) {
             if (cactusFacet.getWorld(block)) {
-                chunk.setBlock(ChunkMath.calcBlockPos(block.add(0, 1, 0)), cactus);
+                chunk.setBlock(ChunkMath.calcBlockPos(block), cactus);
                 chunk.setBlock(ChunkMath.calcBlockPos(block.add(0, 1, 0)), cactus);
                 chunk.setBlock(ChunkMath.calcBlockPos(block.add(0, 1, 0)), cactus);
             }
