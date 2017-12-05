@@ -23,29 +23,38 @@ import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.WorldRasterizer;
+import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 import java.util.Random;
 
 public class ForestWorldRasterizer implements WorldRasterizer {
-    private Block stone, mantleStone;
+    private Block grass, dirt, stone, mantleStone;
 
     @Override
     public void initialize(){
+        grass = CoreRegistry.get(BlockManager.class).getBlock("Core:Grass");
+        dirt = CoreRegistry.get(BlockManager.class).getBlock("Core:Dirt");
         stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
         mantleStone = CoreRegistry.get(BlockManager.class).getBlock("Core:MantleStone");
     }
 
     @Override
     public void generateChunk(CoreChunk chunk,Region chunkRegion) {
+        SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
         Random rand = new Random();
         for (Vector3i position : chunkRegion.getRegion()) {
-            int r = rand.nextInt(100)+1;
+            float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
+            int r = rand.nextInt(100) + 1;
             if (position.y < -12) {
                 if (r % 29 == 0 || r % 13 == 0) {
                     chunk.setBlock(ChunkMath.calcBlockPos(position), mantleStone);
                 } else {
                     chunk.setBlock(ChunkMath.calcBlockPos(position), stone);
                 }
+            } else if (position.y < surfaceHeight) {
+                chunk.setBlock(ChunkMath.calcBlockPos(position), dirt);
+            } else {
+                chunk.setBlock(ChunkMath.calcBlockPos(position), grass);
             }
         }
     }
