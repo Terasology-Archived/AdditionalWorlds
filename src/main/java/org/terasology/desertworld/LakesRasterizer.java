@@ -1,5 +1,7 @@
 package org.terasology.desertworld;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.terasology.math.ChunkMath;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.registry.CoreRegistry;
@@ -16,6 +18,7 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 public class LakesRasterizer implements WorldRasterizerPlugin {
     private Block water;
     private Block grass;
+    private static final Logger logger = LoggerFactory.getLogger(LakesRasterizer.class);
 
     @Override
     public void initialize() {
@@ -44,8 +47,11 @@ public class LakesRasterizer implements WorldRasterizerPlugin {
 
                 for (int i = 0; i < neighbors.length; i++) {
                     Vector3i blockPos = ChunkMath.calcBlockPos(neighbors[i]);
-                    if (chunk.getBlock(blockPos).getURI().toString().equals("Core:Sand")) {
+                    String uri = chunk.getBlock(blockPos).getURI().toString().toLowerCase();
+                    if (uri.equals("core:sand")) {
+                        logger.info(String.format("Changing %s to grass", uri));
                         chunk.setBlock(blockPos, grass);
+                        logger.info("New URI: " + chunk.getBlock(blockPos).getURI().toString().toLowerCase());
                     }
                 }
             }
