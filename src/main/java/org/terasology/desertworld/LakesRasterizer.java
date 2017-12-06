@@ -1,7 +1,5 @@
 package org.terasology.desertworld;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.terasology.math.ChunkMath;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.registry.CoreRegistry;
@@ -17,13 +15,10 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 @RegisterPlugin
 public class LakesRasterizer implements WorldRasterizerPlugin {
     private Block water;
-    private Block grass;
-    private static final Logger logger = LoggerFactory.getLogger(LakesRasterizer.class);
 
     @Override
     public void initialize() {
         water = CoreRegistry.get(BlockManager.class).getBlock("Core:Water");
-        grass = CoreRegistry.get(BlockManager.class).getBlock("Core:Grass");
     }
 
     @Override
@@ -38,22 +33,6 @@ public class LakesRasterizer implements WorldRasterizerPlugin {
 
             if (position.y < seaLevel - 8 && position.y > surfaceHeight) {
                 chunk.setBlock(ChunkMath.calcBlockPos(position), water);
-
-                Vector3i[] neighbors = new Vector3i[4];
-                neighbors[0] = position.addX(1);
-                neighbors[1] = position.addX(-2);
-                neighbors[2] = position.addX(1).addZ(1);
-                neighbors[3] = position.addZ(-2);
-
-                for (int i = 0; i < neighbors.length; i++) {
-                    Vector3i blockPos = ChunkMath.calcBlockPos(neighbors[i]);
-                    String uri = chunk.getBlock(blockPos).getURI().toString().toLowerCase();
-                    if (uri.equals("core:sand")) {
-                        logger.info(String.format("Changing %s to grass", uri));
-                        chunk.setBlock(blockPos, grass);
-                        logger.info("New URI: " + chunk.getBlock(blockPos).getURI().toString().toLowerCase());
-                    }
-                }
             }
         }
     }
