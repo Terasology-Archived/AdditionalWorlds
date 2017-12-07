@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.TropikWorld.world;
+package org.terasology.TropikWorld;
 
 import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
 import org.terasology.engine.SimpleUri;
@@ -36,6 +36,11 @@ public class TropikWorldGenerator extends BaseFacetedWorldGenerator{
         return new WorldBuilder(worldGeneratorPluginLibrary)
                 .setSeaLevel(0)
                 .addProvider(new SurfaceProvider())
+                .addProvider(new MountainsProvider())
+                .addProvider(new LakesProvider())
+                .addProvider(new SeaLevelProvider(0))
+                .addRasterizer(new LakesRasterizer())
                 .addRasterizer(new TropikWorldRasterizer());
     }
 }
+

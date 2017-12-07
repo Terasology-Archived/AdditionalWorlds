@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.TropikWorld.world;
+package org.terasology.TropikWorld;
 
 import org.terasology.entitySystem.Component;
 import org.terasology.math.TeraMath;
@@ -78,7 +78,6 @@ public class MountainsProvider implements ConfigurableFacetProvider {
 
     private static class MountainsConfiguration implements Component {
         @Range(min = 200, max = 500f, increment = 20f, precision = 1, description = "Mountain Height")
-        private float mountainHeight = 400;
+        private float mountainHeight = 450;
     }
 }
-
