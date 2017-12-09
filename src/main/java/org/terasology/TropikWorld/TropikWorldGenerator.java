@@ -39,8 +39,17 @@ public class TropikWorldGenerator extends BaseFacetedWorldGenerator{
                 .addProvider(new MountainsProvider())
                 .addProvider(new LakesProvider())
                 .addProvider(new SeaLevelProvider(0))
+                .addProvider(new CaveFacetProvider())
+                .addProvider(new CaveToDensityProvider())
+                .addProvider(new GrassProvider())
+                .addProvider(new FloraProvider())
+                .addProvider(new RiverProvider())
+                .addRasterizer(new FloraRasterizer())
+                .addRasterizer(new GrassRasterizer())
+                .addRasterizer(new CaveRasterizer())
                 .addRasterizer(new LakesRasterizer())
-                .addRasterizer(new TropikWorldRasterizer());
+                .addRasterizer(new TropikWorldRasterizer())
+                .addPlugins();
     }
 }
 
