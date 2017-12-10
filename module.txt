@@ -1,13 +1,17 @@
 {
     "id" : "AdditionalWorlds",
     "version" : "0.1.0-SNAPSHOT",
-    "author" : "",
+    "author" : "Thomas O'Keeffe",
     "displayName" : "AdditionalWorlds",
     "description" : "",
     "dependencies" : [
 		{
 			"id" : "Core",
 			"minVersion" : "1.0.0"
+		},
+		{
+			"id" : "StructureTemplates",
+			"minVersion" : "0.2.0-SNAPSHOT"
 		}],
     "serverSideOnly" : false
 }
