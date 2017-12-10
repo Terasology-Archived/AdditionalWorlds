@@ -23,8 +23,12 @@ public class DesertWorldGenerator extends BaseFacetedWorldGenerator {
         return new WorldBuilder(worldGeneratorPluginLibrary)
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
-                //.addProvider(new LakesProvider())
-                .addRasterizer(new DesertWorldRasterizer());
-        //.addRasterizer(new LakesRasterizer());
+                .addProvider(new LakesProvider())
+                .addProvider(new CactusProvider())
+                .addProvider(new DeadBushProvider())
+                .addRasterizer(new DeadBushRasterizer())
+                .addRasterizer(new CactusRasterizer())
+                .addRasterizer(new DesertWorldRasterizer())
+                .addRasterizer(new LakesRasterizer());
     }
 }
