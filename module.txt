@@ -12,6 +12,10 @@
 		{
 			"id" : "StructureTemplates",
 			"minVersion" : "0.2.0-SNAPSHOT"
+		}
+		{
+			"id" : "Fences",
+			"minVersion" : "0.1.1-SNAPSHOT"
 		}],
     "serverSideOnly" : false
 }
