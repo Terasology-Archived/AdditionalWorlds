@@ -1,7 +1,7 @@
 {
     "id" : "AdditionalWorlds",
     "version" : "0.1.0-SNAPSHOT",
-    "author" : "Thomas O'Keeffe",
+    "author" : "",
     "displayName" : "AdditionalWorlds",
     "description" : "",
     "dependencies" : [
