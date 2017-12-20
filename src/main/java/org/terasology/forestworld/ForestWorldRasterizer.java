@@ -25,36 +25,31 @@ import org.terasology.world.generation.Region;
 import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
-import java.util.Random;
-
 public class ForestWorldRasterizer implements WorldRasterizer {
-    private Block grass, dirt, stone, mantleStone;
+    private Block grass, mantleStone, stone;
 
     @Override
-    public void initialize(){
+    public void initialize() {
         grass = CoreRegistry.get(BlockManager.class).getBlock("Core:Grass");
-        dirt = CoreRegistry.get(BlockManager.class).getBlock("Core:Dirt");
-        stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
         mantleStone = CoreRegistry.get(BlockManager.class).getBlock("Core:MantleStone");
+        stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
     }
 
     @Override
-    public void generateChunk(CoreChunk chunk,Region chunkRegion) {
+    public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
-        Random rand = new Random();
+        int blockCount = 0;
         for (Vector3i position : chunkRegion.getRegion()) {
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
-            int r = rand.nextInt(100) + 1;
-            if (position.y < -12) {
-                if (r % 29 == 0 || r % 13 == 0) {
+            if (position.y < surfaceHeight) {
+                blockCount++;
+                if(surfaceHeight - position.y == 1) {
+                    chunk.setBlock(ChunkMath.calcBlockPos(position), grass);
+                } else if(blockCount % 27 == 0||blockCount % 29 == 0) {
                     chunk.setBlock(ChunkMath.calcBlockPos(position), mantleStone);
                 } else {
                     chunk.setBlock(ChunkMath.calcBlockPos(position), stone);
                 }
-            } else if (position.y < surfaceHeight) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), dirt);
-            } else {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), grass);
             }
         }
     }
