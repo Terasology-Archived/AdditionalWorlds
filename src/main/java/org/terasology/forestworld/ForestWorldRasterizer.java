@@ -43,12 +43,10 @@ public class ForestWorldRasterizer implements WorldRasterizer {
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
             if (position.y < surfaceHeight) {
                 blockCount++;
-                if(surfaceHeight - position.y == 1) {
-                    chunk.setBlock(ChunkMath.calcBlockPos(position), grass);
-                } else if(blockCount % 27 == 0||blockCount % 29 == 0) {
-                    chunk.setBlock(ChunkMath.calcBlockPos(position), mantleStone);
-                } else {
+                if(surfaceHeight - position.y > 9) {
                     chunk.setBlock(ChunkMath.calcBlockPos(position), stone);
+                } else {
+                    chunk.setBlock(ChunkMath.calcBlockPos(position), grass);
                 }
             }
         }
