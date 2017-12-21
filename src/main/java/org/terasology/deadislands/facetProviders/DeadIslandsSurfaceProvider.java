@@ -33,10 +33,7 @@ public class DeadIslandsSurfaceProvider implements FacetProvider {
 
     @Override
     public void setSeed(long seed) {
-//        surfaceNoise = new SubSampledNoise(new SimplexNoise(seed), new Vector2f(0.01f, 0.01f), 1);
         surfaceNoise = new SubSampledNoise(new BrownianNoise(new PerlinNoise(seed)), new Vector2f(.01f,.01f), 1);
-//        surfaceNoise = new SubSampledNoise(new PerlinNoise(seed), new Vector2f(.01f,.01f), 1);
-//        surfaceNoise = new SubSampledNoise(new WhiteNoise(seed), new Vector2f(.01f,.01f), 1);
     }
 
     @Override
