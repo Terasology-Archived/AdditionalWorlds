@@ -15,20 +15,30 @@
  */
 package org.terasology.deadislands.facetProviders;
 
+import org.terasology.deadislands.facets.DeadIslandsTreeFacet;
 import org.terasology.math.geom.BaseVector2i;
+import org.terasology.utilities.procedural.Noise;
+import org.terasology.utilities.procedural.SimplexNoise;
+import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.facets.SurfaceTemperatureFacet;
 
-@Produces(SurfaceTemperatureFacet.class)
-public class DeadIslandsTemperatureProvider implements FacetProvider{
+@Produces(DeadIslandsTreeFacet.class)
+public class DeadIslandsTreeProvider implements FacetProvider {
+    private Noise noise;
+    @Override
+    public void setSeed(long seed) {
+        noise = new SimplexNoise(seed + 5457);
+    }
+
     @Override
     public void process(GeneratingRegion region) {
-        SurfaceTemperatureFacet facet = new SurfaceTemperatureFacet(region.getRegion(), region.getBorderForFacet(SurfaceTemperatureFacet.class));
-        for (BaseVector2i vector : facet.getRelativeRegion().contents()) {
-            facet.set(vector, 0.5f);
+        Border3D border = region.getBorderForFacet(DeadIslandsTreeFacet.class);
+        DeadIslandsTreeFacet facet = new DeadIslandsTreeFacet(region.getRegion(), border);
+        for (BaseVector2i coordinates : facet.getWorldRegion().contents()){
+            facet.setWorld(coordinates, noise.noise(coordinates.x(), coordinates.y()));
         }
-        region.setRegionFacet(SurfaceTemperatureFacet.class, facet);
+        region.setRegionFacet(DeadIslandsTreeFacet.class, facet);
     }
 }

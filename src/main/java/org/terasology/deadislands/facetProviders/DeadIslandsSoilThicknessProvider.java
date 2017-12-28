@@ -15,37 +15,35 @@
  */
 package org.terasology.deadislands.facetProviders;
 
+import org.terasology.deadislands.facets.DeadIslandsSoilThicknessFacet;
+import org.terasology.deadislands.facets.DeadIslandsTreeFacet;
 import org.terasology.math.geom.BaseVector2i;
 import org.terasology.math.geom.Vector2f;
-import org.terasology.utilities.procedural.BrownianNoise;
 import org.terasology.utilities.procedural.Noise;
-import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
+import org.terasology.utilities.procedural.WhiteNoise;
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
-@Produces(SurfaceHeightFacet.class)
-public class DeadIslandsSurfaceProvider implements FacetProvider {
-    private Noise surfaceNoise;
-
+@Produces(DeadIslandsSoilThicknessFacet.class)
+public class DeadIslandsSoilThicknessProvider implements FacetProvider{
+    Noise noise;
     @Override
     public void setSeed(long seed) {
-//        surfaceNoise = new SubSampledNoise(new SimplexNoise(seed), new Vector2f(0.01f, 0.01f), 1);
-        surfaceNoise = new SubSampledNoise(new BrownianNoise(new PerlinNoise(seed)), new Vector2f(.01f,.01f), 1);
-//        surfaceNoise = new SubSampledNoise(new PerlinNoise(seed), new Vector2f(.01f,.01f), 1);
-//        surfaceNoise = new SubSampledNoise(new WhiteNoise(seed), new Vector2f(.01f,.01f), 1);
+        noise = new SubSampledNoise(new WhiteNoise(seed + 74534), new Vector2f(0.1f, 0.1f), 1);
     }
 
     @Override
     public void process(GeneratingRegion region) {
-        Border3D border = region.getBorderForFacet(SurfaceHeightFacet.class);
-        SurfaceHeightFacet facet = new SurfaceHeightFacet(region.getRegion(), border);
-        for (BaseVector2i coordinates : facet.getWorldRegion().contents()) {
-            facet.setWorld(coordinates, surfaceNoise.noise(coordinates.getX(), coordinates.getY()) * 20);
+        Border3D border = region.getBorderForFacet(DeadIslandsTreeFacet.class);
+        DeadIslandsSoilThicknessFacet facet = new DeadIslandsSoilThicknessFacet(region.getRegion(), border);
+        for (BaseVector2i coordinates : facet.getWorldRegion().contents()){
+            float tempNoise = noise.noise(coordinates.x(), coordinates.y()) * 10;
+            tempNoise *= tempNoise > 0 ? 1 : -1; // AKA Math.abs()
+            facet.setWorld(coordinates, tempNoise + 2);
         }
-        region.setRegionFacet(SurfaceHeightFacet.class, facet);
+        region.setRegionFacet(DeadIslandsSoilThicknessFacet.class, facet);
     }
 }
