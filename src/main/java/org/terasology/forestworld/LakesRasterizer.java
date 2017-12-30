@@ -22,35 +22,32 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizer;
+import org.terasology.world.generation.WorldRasterizerPlugin;
 import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generator.plugin.RegisterPlugin;
 
-public class ForestWorldRasterizer implements WorldRasterizer {
-    private Block grass, mantleStone, stone;
+import java.util.Random;
+
+@RegisterPlugin
+public class LakesRasterizer implements WorldRasterizerPlugin {
+    private Block water;
 
     @Override
     public void initialize() {
-        grass = CoreRegistry.get(BlockManager.class).getBlock("Core:Grass");
-        mantleStone = CoreRegistry.get(BlockManager.class).getBlock("Core:MantleStone");
-        stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
+        water = CoreRegistry.get(BlockManager.class).getBlock("Core:Water");
     }
 
     @Override
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
+        SeaLevelFacet seaLevelFacet = chunkRegion.getFacet(SeaLevelFacet.class);
+        int seaLevel = seaLevelFacet.getSeaLevel();
         for (Vector3i position : chunkRegion.getRegion()) {
+            Random r = new Random();
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
-            SeaLevelFacet seaLevelFacet = chunkRegion.getFacet(SeaLevelFacet.class);
-            int seaLevel = seaLevelFacet.getSeaLevel();
-            if (position.y < surfaceHeight) {
-                if(surfaceHeight - position.y > 9) {
-                    chunk.setBlock(ChunkMath.calcBlockPos(position), stone);
-                } else if (position.y < seaLevel) {
-                    chunk.setBlock(ChunkMath.calcBlockPos(position), mantleStone);
-                } else {
-                    chunk.setBlock(ChunkMath.calcBlockPos(position), grass);
-                }
+            if (position.y < seaLevel && position.y > surfaceHeight) {
+                chunk.setBlock(ChunkMath.calcBlockPos(position), water);
             }
         }
     }
