@@ -25,5 +25,6 @@ public class MyWorldGenerator extends BaseFacetedWorldGenerator {
                 .addProvider(new SeaLevelProvider(0))
                 .addRasterizer(new MyWorldRasterizer());
 
+
     }
 }
