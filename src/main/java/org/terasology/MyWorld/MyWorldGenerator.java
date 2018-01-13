@@ -8,7 +8,7 @@ import org.terasology.world.generation.WorldBuilder;
 import org.terasology.world.generator.RegisterWorldGenerator;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
-@RegisterWorldGenerator(id = "myWorld", displayName = "My World")
+@RegisterWorldGenerator(id = "MyWorld", displayName = "2012 in Artic")
 public class MyWorldGenerator extends BaseFacetedWorldGenerator {
 
     @In
@@ -22,8 +22,14 @@ public class MyWorldGenerator extends BaseFacetedWorldGenerator {
     protected WorldBuilder createWorld() {
         return new WorldBuilder(worldGeneratorPluginLibrary)
                 .addProvider(new SurfaceProvider())
+                .addProvider(new LavaProvider())
+                .addProvider(new Perks())
+                .addProvider(new GrassProvider())
                 .addProvider(new SeaLevelProvider(0))
-                .addRasterizer(new MyWorldRasterizer());
+                .addRasterizer(new LavaRasterizer())
+                .addRasterizer(new GrassRasterizer())
+                .addRasterizer(new MyWorldRasterizer())
+                .addPlugins();
 
 
     }
