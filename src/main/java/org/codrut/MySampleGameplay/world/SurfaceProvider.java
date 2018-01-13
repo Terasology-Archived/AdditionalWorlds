@@ -13,11 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.additionalworlds.imgettingthirsty;
+package org.codrut.MySampleGameplay.world;
 
-import org.terasology.math.geom.BaseVector2i;
-import org.terasology.math.geom.Rect2i;
-import org.terasology.math.geom.Vector2f;
+import org.terasology.math.geom.*;
 import org.terasology.utilities.procedural.Noise;
 import org.terasology.utilities.procedural.SimplexNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
@@ -39,17 +37,13 @@ public class SurfaceProvider implements FacetProvider {
 
     @Override
     public void process(GeneratingRegion region) {
-        // Create our surface height facet
-        Border3D border = region.getBorderForFacet(SurfaceHeightFacet.class);
-        SurfaceHeightFacet facet = new SurfaceHeightFacet(region.getRegion(), border);
+        Border3D border3D = region.getBorderForFacet(SurfaceHeightFacet.class);
+        SurfaceHeightFacet facet = new SurfaceHeightFacet(region.getRegion(), border3D);
 
-        // Loop through every position in our 2d array
-        Rect2i processRegion = facet.getWorldRegion();
-        for (BaseVector2i position: processRegion.contents()) {
-            facet.setWorld(position, surfaceNoise.noise(position.getX(), position.getY()) * 20);
+        Rect2i processReg = facet.getWorldRegion();
+        for(BaseVector2i pos : processReg.contents()){
+            facet.setWorld(pos, surfaceNoise.noise(pos.getX(), pos.getY()) * 20);
         }
-
-        // Pass our newly created and populated facet to the region
         region.setRegionFacet(SurfaceHeightFacet.class, facet);
     }
 }
