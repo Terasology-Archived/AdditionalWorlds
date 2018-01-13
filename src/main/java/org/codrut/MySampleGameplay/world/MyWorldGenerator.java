@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.forestworld;
+package org.codrut.MySampleGameplay.world;
 
 import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
 import org.terasology.engine.SimpleUri;
@@ -23,12 +23,13 @@ import org.terasology.world.generation.WorldBuilder;
 import org.terasology.world.generator.RegisterWorldGenerator;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
-@RegisterWorldGenerator(id = "forestWorld", displayName = "Forest World")
-public class ForestWorldGenerator extends BaseFacetedWorldGenerator{
+@RegisterWorldGenerator(id="MyWG", displayName="MyWG")
+public class MyWorldGenerator extends BaseFacetedWorldGenerator{
+
     @In
     private WorldGeneratorPluginLibrary worldGeneratorPluginLibrary;
 
-    public ForestWorldGenerator(SimpleUri uri) {
+    public MyWorldGenerator(SimpleUri uri) {
         super(uri);
     }
 
@@ -37,6 +38,6 @@ public class ForestWorldGenerator extends BaseFacetedWorldGenerator{
         return new WorldBuilder(worldGeneratorPluginLibrary)
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
-                .addRasterizer(new ForestWorldRasterizer());
+                .addRasterizer(new MyWorldRasterizer());
     }
 }
