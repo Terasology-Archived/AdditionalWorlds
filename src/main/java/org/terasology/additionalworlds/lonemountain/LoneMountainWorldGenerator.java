@@ -15,7 +15,9 @@
  */
 package org.terasology.additionalworlds.lonemountain;
 
+import org.terasology.core.world.generator.facetProviders.BiomeProvider;
 import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
+import org.terasology.core.world.generator.rasterizers.TreeRasterizer;
 import org.terasology.engine.SimpleUri;
 import org.terasology.registry.In;
 import org.terasology.world.generation.BaseFacetedWorldGenerator;
@@ -35,8 +37,10 @@ public class LoneMountainWorldGenerator extends BaseFacetedWorldGenerator {
     @Override
     protected WorldBuilder createWorld() {
         return new WorldBuilder(worldGeneratorPluginLibrary)
-                .addProvider(new GaussianSurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
-                .addRasterizer(new LoneMountainRasterizer());
+                .addProvider(new GaussianSurfaceProvider())
+                .addProvider(new LoneMountainTreeProvider())
+                .addRasterizer(new LoneMountainRasterizer())
+                .addRasterizer(new TreeRasterizer());
     }
 }
