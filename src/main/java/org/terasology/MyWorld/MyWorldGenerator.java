@@ -24,9 +24,11 @@ public class MyWorldGenerator extends BaseFacetedWorldGenerator {
                 .addProvider(new SurfaceProvider())
                 .addProvider(new LavaProvider())
                 .addProvider(new Perks())
+                .addProvider(new HouseProvider())
                 .addProvider(new GrassProvider())
                 .addProvider(new SeaLevelProvider(0))
                 .addRasterizer(new LavaRasterizer())
+                .addRasterizer(new HouseRasterizer())
                 .addRasterizer(new GrassRasterizer())
                 .addRasterizer(new MyWorldRasterizer())
                 .addPlugins();

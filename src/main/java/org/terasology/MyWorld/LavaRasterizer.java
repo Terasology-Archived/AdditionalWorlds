@@ -16,12 +16,12 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
 
 @RegisterPlugin
 public class LavaRasterizer implements WorldRasterizerPlugin{
-    private Block lava;
+    private Block water;
 
     @Override
     public void initialize()
     {
-        lava = CoreRegistry.get(BlockManager.class).getBlock("Core:Lava");
+        water = CoreRegistry.get(BlockManager.class).getBlock("Core:Water");
     }
     @Override
     public void generateChunk (CoreChunk chunk, Region chunkRegion){
@@ -31,7 +31,7 @@ public class LavaRasterizer implements WorldRasterizerPlugin{
         for (Vector3i position : chunkRegion.getRegion()) {
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
             if (position.y < seaLevel && position.y > surfaceHeight) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), lava);
+                chunk.setBlock(ChunkMath.calcBlockPos(position), water);
             }
         }
     }
