@@ -34,8 +34,9 @@ import java.math.RoundingMode;
 @Produces(TreeFacet.class)
 @Requires(@Facet(value = SurfaceHeightFacet.class, border = @FacetBorder(sides = 13 + 1)))
 public class LoneMountainTreeProvider implements FacetProvider {
-    private static final Vector2i TREE_SURFACE_POSITION =
+    public static final Vector2i TREE_SURFACE_POSITION =
             new Vector2i(GaussianSurfaceProvider.CENTER, RoundingMode.FLOOR);
+    public static final int MAX_TREE_BARK_RADIUS = 4;
 
     @Override
     public void process(GeneratingRegion region) {
