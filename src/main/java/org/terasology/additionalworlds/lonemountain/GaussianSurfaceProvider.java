@@ -28,6 +28,8 @@ import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 @Produces(SurfaceHeightFacet.class)
 public class GaussianSurfaceProvider implements ConfigurableFacetProvider {
+    public static final Vector2f CENTER = Vector2f.zero();
+
     private GaussianSurfaceSampler surfaceSampler;
 
     private GaussianSurfaceConfiguration configuration = new GaussianSurfaceConfiguration();
@@ -35,7 +37,7 @@ public class GaussianSurfaceProvider implements ConfigurableFacetProvider {
     @Override
     public void initialize() {
         Vector2f radius = new Vector2f(configuration.mountainRadiusX, configuration.mountainRadiusY);
-        surfaceSampler = new GaussianSurfaceSampler(Vector2f.zero(), radius, configuration.mountainHeight);
+        surfaceSampler = new GaussianSurfaceSampler(CENTER, radius, configuration.mountainHeight);
     }
 
     @Override
