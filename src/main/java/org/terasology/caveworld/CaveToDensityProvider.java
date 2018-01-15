@@ -15,25 +15,32 @@
  */
 package org.terasology.caveworld;
 
+import org.terasology.math.geom.Vector3i;
+import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetProviderPlugin;
 import org.terasology.world.generation.GeneratingRegion;
-import org.terasology.world.generation.Produces;
+import org.terasology.world.generation.Requires;
+import org.terasology.world.generation.Updates;
+import org.terasology.world.generation.facets.DensityFacet;
 import org.terasology.world.generator.plugin.RegisterPlugin;
 
 @RegisterPlugin
-@Produces(AmplitudeFacet.class)
-public class AmplitudeProvider implements FacetProviderPlugin {
-
-    private int amplitude = 50;
-
-    public AmplitudeProvider(int amplitude) {
-        this.amplitude = amplitude;
+@Updates(@Facet(DensityFacet.class))
+@Requires(@Facet(CaveFacet.class))
+public class CaveToDensityProvider implements FacetProviderPlugin {
+    @Override
+    public void setSeed(long seed) {
     }
-
-    public AmplitudeProvider() {}
 
     @Override
     public void process(GeneratingRegion region) {
-        region.setRegionFacet(AmplitudeFacet.class, new AmplitudeFacet(amplitude));
+        CaveFacet caveFacet = region.getRegionFacet(CaveFacet.class);
+        DensityFacet densityFacet = region.getRegionFacet(DensityFacet.class);
+
+        for (Vector3i pos : region.getRegion()) {
+            if (caveFacet.getWorld(pos)) {
+                densityFacet.setWorld(pos, -1f);
+            }
+        }
     }
 }

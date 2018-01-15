@@ -15,49 +15,43 @@
  */
 package org.terasology.caveworld;
 
-import org.terasology.math.ChunkMath;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
+import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.WorldRasterizerPlugin;
 import org.terasology.world.generator.plugin.RegisterPlugin;
 
+/**
+ * Still need this rasterizer because just changing the density does not provide the correct effect with the default perlin generator
+ */
 @RegisterPlugin
-public class CaveWorldRasterizer implements WorldRasterizerPlugin {
-
-    private Block ground;
+public class LavalakeRasterizer implements WorldRasterizerPlugin {
     private Block lava;
+    private Block air;
+
+    public LavalakeRasterizer() {
+    }
 
     @Override
     public void initialize() {
-        ground = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
         lava = CoreRegistry.get(BlockManager.class).getBlock("Core:Lava");
+        BlockManager blockManager = CoreRegistry.get(BlockManager.class);
+        air = blockManager.getBlock(BlockManager.AIR_ID);
     }
 
     @Override
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
-        HeightFacet surfaceHeightFacet = chunkRegion.getFacet(HeightFacet.class);
-        AmplitudeFacet amplitudeFacet = chunkRegion.getFacet(AmplitudeFacet.class);
+        LavalakeFacet caveFacet = chunkRegion.getFacet(LavalakeFacet.class);
 
-        for (Vector3i position : chunkRegion.getRegion()) {
-            if (position.y > amplitudeFacet.getAmplitude()) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), ground);
-                continue;
-            }
-
-            float surfaceOffset = surfaceHeightFacet.getWorld(position.x, position.z);
-            float ceilingHeight = amplitudeFacet.getAmplitude();
-            float centerHeight = 0;
-            float floorHeight = -ceilingHeight + 1;
-
-            if (Math.abs(centerHeight - position.y) >= surfaceOffset) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), ground);
-
-            } else if (position.y <= floorHeight) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), lava);
+        for (Vector3i position : ChunkConstants.CHUNK_REGION) {
+            if (caveFacet.get(position)) {
+                if (chunk.getBlock(position) != air) {
+                    chunk.setBlock(position, lava);
+                }
             }
         }
     }

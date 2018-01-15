@@ -15,18 +15,18 @@
  */
 package org.terasology.caveworld;
 
-import org.terasology.world.generation.WorldFacet;
+import org.terasology.math.Region3i;
+import org.terasology.math.geom.Vector3i;
+import org.terasology.world.generation.Border3D;
+import org.terasology.world.generation.facets.base.BaseBooleanFieldFacet3D;
 
-/**
- */
-public class AmplitudeFacet implements WorldFacet {
-    private int amplitude;
+public class CaveFacet extends BaseBooleanFieldFacet3D {
 
-    public AmplitudeFacet(int amplitude) {
-        this.amplitude = amplitude;
+    public CaveFacet(Region3i targetRegion, Border3D border) {
+        super(targetRegion, border);
     }
 
-    public int getAmplitude() {
-        return amplitude;
+    public int getWorldIndex(Vector3i position) {
+        return getWorldIndex(position.x, position.y, position.z);
     }
 }
