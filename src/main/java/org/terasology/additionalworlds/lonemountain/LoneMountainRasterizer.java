@@ -25,6 +25,7 @@ import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.WorldRasterizer;
+import org.terasology.world.generation.facets.DensityFacet;
 import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 import org.terasology.world.liquid.LiquidData;
@@ -33,33 +34,50 @@ import org.terasology.world.liquid.LiquidType;
 public class LoneMountainRasterizer implements WorldRasterizer {
     private Block dirt;
     private Block water;
+    private Block stone;
+    private Block grass;
 
     @Override
     public void initialize() {
         BlockManager blockManager = CoreRegistry.get(BlockManager.class);
         dirt = blockManager.getBlock("Core:Dirt");
+        stone = blockManager.getBlock("core:stone");
+        grass = blockManager.getBlock("core:grass");
         water = blockManager.getBlock("core:water");
     }
 
     @Override
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
+        DensityFacet densityFacet = chunkRegion.getFacet(DensityFacet.class);
+
         int seaLevel = chunkRegion.getFacet(SeaLevelFacet.class).getSeaLevel();
 
         for (Vector3i position : chunkRegion.getRegion()) {
             Vector2i terrainPosition = new Vector2i(position.x, position.z);
-            float surfaceHeight = TeraMath.floorToInt(surfaceHeightFacet.getWorld(terrainPosition));
+            int surfaceHeight = TeraMath.floorToInt(surfaceHeightFacet.getWorld(terrainPosition));
+            float density = densityFacet.getWorld(position);
 
             Vector3i blockPosition = ChunkMath.calcBlockPos(position);
 
-            if (position.y <= surfaceHeight) {
-                chunk.setBlock(blockPosition, dirt);
-            }
+            Block solidBlock = getSolidBlock(surfaceHeight, density);
 
-            else if (position.y <= seaLevel) {
+            if (solidBlock != null) {
+                chunk.setBlock(blockPosition, solidBlock);
+            } else if (position.y <= seaLevel) {
                 chunk.setBlock(blockPosition, water);
                 chunk.setLiquid(blockPosition, new LiquidData(LiquidType.WATER, LiquidData.MAX_LIQUID_DEPTH));
             }
         }
+    }
+
+    private Block getSolidBlock(int surfaceHeight, float density) {
+        if (density >= 1) {
+            return stone;
+        } else if (density >= 0) {
+            return grass;
+        }
+
+        return null;
     }
 }
