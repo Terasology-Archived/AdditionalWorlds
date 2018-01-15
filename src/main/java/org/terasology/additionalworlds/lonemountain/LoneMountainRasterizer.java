@@ -16,6 +16,8 @@
 package org.terasology.additionalworlds.lonemountain;
 
 import org.terasology.math.ChunkMath;
+import org.terasology.math.TeraMath;
+import org.terasology.math.geom.Vector2i;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.world.block.Block;
@@ -23,23 +25,40 @@ import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
 import org.terasology.world.generation.WorldRasterizer;
+import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.liquid.LiquidData;
+import org.terasology.world.liquid.LiquidType;
 
 public class LoneMountainRasterizer implements WorldRasterizer {
     private Block dirt;
+    private Block water;
 
     @Override
     public void initialize() {
-        dirt = CoreRegistry.get(BlockManager.class).getBlock("Core:Dirt");
+        BlockManager blockManager = CoreRegistry.get(BlockManager.class);
+        dirt = blockManager.getBlock("Core:Dirt");
+        water = blockManager.getBlock("core:water");
     }
 
     @Override
     public void generateChunk(CoreChunk chunk, Region chunkRegion) {
         SurfaceHeightFacet surfaceHeightFacet = chunkRegion.getFacet(SurfaceHeightFacet.class);
+        int seaLevel = chunkRegion.getFacet(SeaLevelFacet.class).getSeaLevel();
+
         for (Vector3i position : chunkRegion.getRegion()) {
-            float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
-            if (position.y < surfaceHeight) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), dirt);
+            Vector2i terrainPosition = new Vector2i(position.x, position.z);
+            float surfaceHeight = TeraMath.floorToInt(surfaceHeightFacet.getWorld(terrainPosition));
+
+            Vector3i blockPosition = ChunkMath.calcBlockPos(position);
+
+            if (position.y <= surfaceHeight) {
+                chunk.setBlock(blockPosition, dirt);
+            }
+
+            else if (position.y <= seaLevel) {
+                chunk.setBlock(blockPosition, water);
+                chunk.setLiquid(blockPosition, new LiquidData(LiquidType.WATER, LiquidData.MAX_LIQUID_DEPTH));
             }
         }
     }

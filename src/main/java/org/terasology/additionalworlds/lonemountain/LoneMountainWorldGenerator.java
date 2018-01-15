@@ -71,7 +71,7 @@ public class LoneMountainWorldGenerator extends BaseFacetedWorldGenerator {
     @Override
     protected WorldBuilder createWorld() {
         return new WorldBuilder(worldGeneratorPluginLibrary)
-                .addProvider(new SeaLevelProvider(0))
+                .addProvider(new SeaLevelProvider(2))
                 .addProvider(new GaussianSurfaceProvider())
                 .addProvider(new LoneMountainTreeProvider())
                 .addRasterizer(new LoneMountainRasterizer())
