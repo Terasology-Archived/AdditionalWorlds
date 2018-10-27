@@ -25,10 +25,12 @@ public class WorldGenerator extends BaseFacetedWorldGenerator {
                 .addProvider(new BushProvider())
                 .addProvider(new LogProvider())
                 .addProvider(new HouseProvider())
+                .addProvider(new LakesProvider())
                 .addRasterizer(new TerrainRasterizer())
                 .addRasterizer(new BushRasterizer())
                 .addRasterizer(new LogRasterizer())
                 .addRasterizer(new HouseRasterizer())
+                .addRasterizer(new LakesRasterizer())
                 .addPlugins();
     }
 }

@@ -40,8 +40,10 @@ public class ThirstyWorldGenerator extends BaseFacetedWorldGenerator {
                 .addProvider(new SeaLevelProvider(0))
                 .addProvider(new MountainsProvider())
                 .addProvider(new WaterBoxProvider())
+                .addProvider(new LakesProvider())
                 .addRasterizer(new ThirstyWorldRasterizer())
                 .addRasterizer(new WaterBoxRasterizer())
+                .addRasterizer(new LakesRasterizer())
                 .addPlugins();
     }
 }

@@ -22,13 +22,11 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizerPlugin;
+import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
-public class LakesRasterizer implements WorldRasterizerPlugin {
+public class LakesRasterizer implements WorldRasterizer {
     private Block lava;
 
     @Override
