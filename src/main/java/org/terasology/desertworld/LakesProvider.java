@@ -9,7 +9,6 @@ import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
-@RegisterPlugin
 @Requires(@Facet(value = SurfaceHeightFacet.class, border = @FacetBorder(sides = 5, bottom = 2, top = 2)))
 @Produces(LakeFacet.class)
 public class LakesProvider implements FacetProvider {
