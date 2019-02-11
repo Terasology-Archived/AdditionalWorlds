@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.additionalworlds.imgettingthirsty;
+package org.terasology.forestworld;
 
 import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
 import org.terasology.engine.SimpleUri;
@@ -23,27 +23,20 @@ import org.terasology.world.generation.WorldBuilder;
 import org.terasology.world.generator.RegisterWorldGenerator;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
-@RegisterWorldGenerator(id = "imGettingThirsty", displayName = "I'm Getting Thirsty...")
-public class ThirstyWorldGenerator extends BaseFacetedWorldGenerator {
+@RegisterWorldGenerator(id = "forestWorld", displayName = "Forest World")
+public class ForestWorldGenerator extends BaseFacetedWorldGenerator{
     @In
     private WorldGeneratorPluginLibrary worldGeneratorPluginLibrary;
 
-    public ThirstyWorldGenerator(SimpleUri uri) {
+    public ForestWorldGenerator(SimpleUri uri) {
         super(uri);
     }
 
     @Override
     protected WorldBuilder createWorld() {
         return new WorldBuilder(worldGeneratorPluginLibrary)
-                .setSeaLevel(0)
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
-                .addProvider(new MountainsProvider())
-                .addProvider(new WaterBoxProvider())
-                .addProvider(new LakesProvider())
-                .addRasterizer(new ThirstyWorldRasterizer())
-                .addRasterizer(new WaterBoxRasterizer())
-                .addRasterizer(new LakesRasterizer())
-                .addPlugins();
+                .addRasterizer(new ForestWorldRasterizer());
     }
 }
