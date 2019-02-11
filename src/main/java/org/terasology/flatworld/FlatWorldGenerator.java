@@ -1,4 +1,4 @@
-package org.terasology.desertworld;
+package org.terasology.flatworld;
 
 import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
 import org.terasology.engine.SimpleUri;
@@ -8,13 +8,12 @@ import org.terasology.world.generation.WorldBuilder;
 import org.terasology.world.generator.RegisterWorldGenerator;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
-@RegisterWorldGenerator(id = "desertWorld", displayName = "Desert World")
-public class DesertWorldGenerator extends BaseFacetedWorldGenerator {
-
+@RegisterWorldGenerator(id = "flatWorld", displayName = "Flat World")
+public class FlatWorldGenerator extends BaseFacetedWorldGenerator {
     @In
     private WorldGeneratorPluginLibrary worldGeneratorPluginLibrary;
 
-    public DesertWorldGenerator(SimpleUri uri) {
+    public FlatWorldGenerator(SimpleUri uri) {
         super(uri);
     }
 
@@ -23,12 +22,6 @@ public class DesertWorldGenerator extends BaseFacetedWorldGenerator {
         return new WorldBuilder(worldGeneratorPluginLibrary)
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
-                .addProvider(new LakesProvider())
-                .addProvider(new CactusProvider())
-                .addProvider(new DeadBushProvider())
-                .addRasterizer(new DeadBushRasterizer())
-                .addRasterizer(new CactusRasterizer())
-                .addRasterizer(new DesertWorldRasterizer())
-                .addRasterizer(new LakesRasterizer());
+                .addRasterizer(new FlatWorldRasterizer());
     }
 }
