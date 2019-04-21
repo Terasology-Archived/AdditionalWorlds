@@ -2,14 +2,20 @@
 
 A collection of sample world generators.
 
+Mostly contributed via [Google Code-In 2017](https://codein.withgoogle.com/archive/2017/) and [Google Code-In 2018](https://codein.withgoogle.com/archive/2018/).
+
+- **Cave World**
 - **Christmas World**
   ![Christmas World](preview/ChristmasWorld.jpg)
 - **Desert World**
-- **Desolate Winters**
+  ![Desert World](preview/DesertWorld.png)
+- **Desolate Winters** ⚠️
   ![Desolate Winters](preview/DesolateWinters.jpg)
 - **End World**
-- **Flat World**
 - **Forest World**
+  ![Forest World](preview/ForestWorld.png)
+- **I'm Getting Thirsty**
+  ![I'm Getting Thirsty](preview/ImGettingThirsty.png)
 - **Lava Land**
   ![Lava Land](preview/LavaLand.jpg)
 - **Lone Mountain**
