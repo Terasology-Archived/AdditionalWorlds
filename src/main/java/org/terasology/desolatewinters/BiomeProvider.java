@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.desolateWinterWorldGeneration;
+package org.terasology.desolatewinters;
 
 /*
  * Copyright 2014 MovingBlocks
@@ -31,21 +31,19 @@ package org.terasology.desolateWinterWorldGeneration;
  * limitations under the License.
  */
 
-
 import org.terasology.core.world.CoreBiome;
 import org.terasology.core.world.generator.facets.BiomeFacet;
 import org.terasology.math.geom.BaseVector2i;
-import org.terasology.world.generation.facets.SeaLevelFacet;
-import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generation.facets.SurfaceHumidityFacet;
-import org.terasology.world.generation.facets.SurfaceTemperatureFacet;
-
 import org.terasology.world.generation.Border3D;
 import org.terasology.world.generation.Facet;
 import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
+import org.terasology.world.generation.facets.SeaLevelFacet;
+import org.terasology.world.generation.facets.SurfaceHeightFacet;
+import org.terasology.world.generation.facets.SurfaceHumidityFacet;
+import org.terasology.world.generation.facets.SurfaceTemperatureFacet;
 
 /**
  * Determines the biome based on temperature and humidity

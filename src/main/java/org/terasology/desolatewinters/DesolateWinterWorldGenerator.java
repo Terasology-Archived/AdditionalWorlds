@@ -13,21 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.desolateWinterWorldGeneration;
+package org.terasology.desolatewinters;
 
-
-import org.terasology.core.world.generator.rasterizers.FloraRasterizer;
-import org.terasology.world.generation.WorldBuilder;
+import org.terasology.core.world.generator.facetProviders.DefaultTreeProvider;
 import org.terasology.core.world.generator.facetProviders.SeaLevelProvider;
-import org.terasology.world.generator.RegisterWorldGenerator;
-import org.terasology.world.generation.BaseFacetedWorldGenerator;
-import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
+import org.terasology.core.world.generator.rasterizers.TreeRasterizer;
 import org.terasology.engine.SimpleUri;
 import org.terasology.registry.In;
-import org.terasology.core.world.generator.facetProviders.*;
-import org.terasology.core.world.generator.rasterizers.TreeRasterizer;
-
-
+import org.terasology.world.generation.BaseFacetedWorldGenerator;
+import org.terasology.world.generation.WorldBuilder;
+import org.terasology.world.generator.RegisterWorldGenerator;
+import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
 @RegisterWorldGenerator(id="desolateWinterWorld", displayName = "Desolate Winter World")
 public class DesolateWinterWorldGenerator extends BaseFacetedWorldGenerator{

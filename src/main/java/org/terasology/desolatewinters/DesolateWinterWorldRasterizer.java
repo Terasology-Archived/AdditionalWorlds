@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.terasology.desolateWinterWorldGeneration;
+package org.terasology.desolatewinters;
 
 import org.terasology.math.ChunkMath;
 import org.terasology.math.geom.Vector3i;
 import org.terasology.registry.CoreRegistry;
+import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
-import org.terasology.world.block.Block;
-import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.Region;
+import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 import java.util.Random;
