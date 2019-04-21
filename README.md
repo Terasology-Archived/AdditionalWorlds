@@ -11,5 +11,7 @@ A collection of sample world generators.
 - **Lava Land**
   ![Lava Land](preview/LavaLand.jpg)
 - **Lone Mountain**
+  ![Lone Mountain](preview/LoneMountain.png)
 - **Tropik World**
   ![Tropik World](preview/TropikWorld.png)
+
