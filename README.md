@@ -2,6 +2,8 @@
 
 A collection of sample world generators.
 
+- **Christmas World**
+  ![Christmas World](preview/ChristmasWorld.jpg)
 - **Desert World**
 - **End World**
 - **Flat World**
