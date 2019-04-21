@@ -28,8 +28,6 @@ import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.DensityFacet;
 import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.liquid.LiquidData;
-import org.terasology.world.liquid.LiquidType;
 
 public class LoneMountainRasterizer implements WorldRasterizer {
     private Block dirt;
@@ -66,7 +64,6 @@ public class LoneMountainRasterizer implements WorldRasterizer {
                 chunk.setBlock(blockPosition, solidBlock);
             } else if (position.y <= seaLevel) {
                 chunk.setBlock(blockPosition, water);
-                chunk.setLiquid(blockPosition, new LiquidData(LiquidType.WATER, LiquidData.MAX_LIQUID_DEPTH));
             }
         }
     }
