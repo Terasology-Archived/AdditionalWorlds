@@ -32,11 +32,18 @@ public class ForestWorldGenerator extends BaseFacetedWorldGenerator{
         super(uri);
     }
 
+
     @Override
     protected WorldBuilder createWorld() {
         return new WorldBuilder(worldGeneratorPluginLibrary)
+                .setSeaLevel(0)
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
+                .addProvider(new MountainsProvider())
+                .addProvider(new TreeProvider())
+                .addProvider(new LakesProvider())
+                .addRasterizer(new TreeRasterizer())
+                .addRasterizer(new LakesRasterizer())
                 .addRasterizer(new ForestWorldRasterizer());
     }
 }
