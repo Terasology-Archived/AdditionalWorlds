@@ -15,14 +15,12 @@
  */
 package org.terasology.additionalworlds.caveworld;
 
-import org.terasology.world.generation.FacetProviderPlugin;
+import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Produces(AmplitudeFacet.class)
-public class AmplitudeProvider implements FacetProviderPlugin {
+public class AmplitudeProvider implements FacetProvider {
 
     private int amplitude = 50;
 

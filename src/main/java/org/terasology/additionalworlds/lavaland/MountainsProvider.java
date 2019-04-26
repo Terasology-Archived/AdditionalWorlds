@@ -20,7 +20,7 @@ public class MountainsProvider implements ConfigurableFacetProvider {
     
     private Noise mountainNoise;
     
-    private MountainsConfiguration configuration = new MountainsConfiguration();
+    private LLMountainsConfiguration configuration = new LLMountainsConfiguration();
     
     @Override
     public void setSeed(long seed) {
@@ -58,10 +58,10 @@ public class MountainsProvider implements ConfigurableFacetProvider {
     @Override
     public void setConfiguration(Component configuration)
     {
-        this.configuration = (MountainsConfiguration)configuration;
+        this.configuration = (LLMountainsConfiguration)configuration;
     }
     
-    private static class MountainsConfiguration implements Component {
+    private static class LLMountainsConfiguration implements Component {
         @Range(min = 200, max = 500f, increment = 20f, precision = 1, description = "Mountain Height")
         private float mountainHeight = 400;
     }

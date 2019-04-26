@@ -27,14 +27,11 @@ import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
 import org.terasology.world.generation.ConfigurableFacetProvider;
 import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProviderPlugin;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Updates;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Updates(@Facet(HeightFacet.class))
-public class HillsProvider implements FacetProviderPlugin, ConfigurableFacetProvider {
+public class HillsProvider implements ConfigurableFacetProvider {
 
     private Noise mountainNoise;
 

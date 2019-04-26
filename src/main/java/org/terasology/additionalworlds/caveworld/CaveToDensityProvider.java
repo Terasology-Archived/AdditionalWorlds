@@ -17,17 +17,15 @@ package org.terasology.additionalworlds.caveworld;
 
 import org.terasology.math.geom.Vector3i;
 import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProviderPlugin;
+import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Requires;
 import org.terasology.world.generation.Updates;
 import org.terasology.world.generation.facets.DensityFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Updates(@Facet(DensityFacet.class))
 @Requires(@Facet(CaveFacet.class))
-public class CaveToDensityProvider implements FacetProviderPlugin {
+public class CaveToDensityProvider implements FacetProvider {
     @Override
     public void setSeed(long seed) {
     }

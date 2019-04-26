@@ -25,18 +25,15 @@ import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
 import org.terasology.world.generation.ConfigurableFacetProvider;
 import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProviderPlugin;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Produces(CaveFacet.class)
 @Requires(@Facet(SurfaceHeightFacet.class))
-public class CaveFacetProvider implements ConfigurableFacetProvider, FacetProviderPlugin {
-    private CaveFacetProviderConfiguration configuration = new CaveFacetProviderConfiguration();
+public class CaveFacetProvider implements ConfigurableFacetProvider {
+    private TWCaveFacetProviderConfiguration configuration = new TWCaveFacetProviderConfiguration();
 
     Noise baseCaveNoise;
     Noise baseFadeCaveNoise;
@@ -105,10 +102,10 @@ public class CaveFacetProvider implements ConfigurableFacetProvider, FacetProvid
 
     @Override
     public void setConfiguration(Component configuration) {
-        this.configuration = (CaveFacetProviderConfiguration) configuration;
+        this.configuration = (TWCaveFacetProviderConfiguration) configuration;
     }
 
-    private static class CaveFacetProviderConfiguration implements Component {
+    private static class TWCaveFacetProviderConfiguration implements Component {
         @Range(min = 0, max = 1f, increment = 0.05f, precision = 2, description = "Amount of Caves")
         public float amountOfCaves = 0.75f;
         @Range(min = 0, max = 2f, increment = 0.05f, precision = 2, description = "Width")
@@ -141,7 +138,7 @@ public class CaveFacetProvider implements ConfigurableFacetProvider, FacetProvid
 
         private int octaves;
         private float[] spectralWeights;
-        private float scale;                // 1/sum of all weights
+        //private float scale;                // 1/sum of all weights
         private final Noise other;
 
         /**
@@ -188,13 +185,13 @@ public class CaveFacetProvider implements ConfigurableFacetProvider, FacetProvid
             return result;// * scale;
         }
 
-        private static float computeScale(float[] spectralWeights) {
-            float sum = 0;
-            for (float weight : spectralWeights) {
-                sum += weight;
-            }
-            return 1.0f / sum;
-        }
+//        private static float computeScale(float[] spectralWeights) {
+//            float sum = 0;
+//            for (float weight : spectralWeights) {
+//                sum += weight;
+//            }
+//            return 1.0f / sum;
+//        }
 
         /**
          * @param octaves the number of octaves used for computation
@@ -260,7 +257,7 @@ public class CaveFacetProvider implements ConfigurableFacetProvider, FacetProvid
                 spectralWeights[i] = (float) Math.pow(lacunarity, -persistence * i);
             }
 
-            scale = computeScale(spectralWeights);
+            //scale = computeScale(spectralWeights);
         }
     }
 

@@ -30,7 +30,7 @@ import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 public class LoneMountainRasterizer implements WorldRasterizer {
-    private Block dirt;
+    //private Block dirt;
     private Block water;
     private Block stone;
     private Block grass;
@@ -38,7 +38,7 @@ public class LoneMountainRasterizer implements WorldRasterizer {
     @Override
     public void initialize() {
         BlockManager blockManager = CoreRegistry.get(BlockManager.class);
-        dirt = blockManager.getBlock("Core:Dirt");
+        //dirt = blockManager.getBlock("Core:Dirt");
         stone = blockManager.getBlock("core:stone");
         grass = blockManager.getBlock("core:grass");
         water = blockManager.getBlock("core:water");

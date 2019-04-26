@@ -7,10 +7,9 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizerPlugin;
+import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
 /*
  * Copyright 2017 MovingBlocks
@@ -27,8 +26,7 @@ import org.terasology.world.generator.plugin.RegisterPlugin;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@RegisterPlugin
-public class WaterLakeRasterizer implements WorldRasterizerPlugin {
+public class WaterLakeRasterizer implements WorldRasterizer {
     private Block water;
 
     @Override

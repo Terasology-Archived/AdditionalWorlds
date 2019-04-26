@@ -22,10 +22,10 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizerPlugin;
+import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
-public class ChristmasWorldRasterizer implements WorldRasterizerPlugin {
+public class ChristmasWorldRasterizer implements WorldRasterizer {
     private Block ice;
     private Block leaf;
     private Block flower;

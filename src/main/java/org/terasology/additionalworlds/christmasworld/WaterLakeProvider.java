@@ -8,11 +8,11 @@ import org.terasology.utilities.procedural.BrownianNoise;
 import org.terasology.utilities.procedural.Noise;
 import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
-import org.terasology.world.generation.FacetProviderPlugin;
+import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
-public class WaterLakeProvider implements FacetProviderPlugin {
+public class WaterLakeProvider implements FacetProvider {
 
     private Noise lakeNoise;
 

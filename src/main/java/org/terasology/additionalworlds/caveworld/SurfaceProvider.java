@@ -22,14 +22,12 @@ import org.terasology.utilities.procedural.Noise;
 import org.terasology.utilities.procedural.SimplexNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
 import org.terasology.world.generation.Border3D;
-import org.terasology.world.generation.FacetProviderPlugin;
+import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Produces(HeightFacet.class)
-public class SurfaceProvider implements FacetProviderPlugin {
+public class SurfaceProvider implements FacetProvider {
 
     private Noise surfaceNoise;
 

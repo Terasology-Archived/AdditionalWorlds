@@ -34,8 +34,6 @@ import org.terasology.world.generation.facets.SurfaceHeightFacet;
 import org.terasology.world.generator.RegisterWorldGenerator;
 import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
 
-import java.math.RoundingMode;
-
 @RegisterWorldGenerator(id = "loneMountain", displayName = "Lone Mountain")
 public class LoneMountainWorldGenerator extends BaseFacetedWorldGenerator {
     private static final int SPAWN_OFFSET = LoneMountainTreeProvider.MAX_TREE_BARK_RADIUS;

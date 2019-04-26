@@ -24,13 +24,12 @@ import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
 import org.terasology.world.generation.ConfigurableFacetProvider;
 import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Updates;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 @Updates(@Facet(SurfaceHeightFacet.class))
-public class RiverProvider implements FacetProvider, ConfigurableFacetProvider {
+public class RiverProvider implements ConfigurableFacetProvider {
     private static final int SAMPLE_RATE = 4;
     private SubSampledNoise riverNoise;
     private RiverProviderConfiguration configuration = new RiverProviderConfiguration();

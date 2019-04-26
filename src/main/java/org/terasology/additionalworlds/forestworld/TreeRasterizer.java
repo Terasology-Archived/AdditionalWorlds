@@ -27,7 +27,7 @@ import org.terasology.world.generation.WorldRasterizer;
 import java.util.Random;
 
 public class TreeRasterizer implements WorldRasterizer{
-    private Block birchWood, oakWood, pineWood, leaf, stone;
+    private Block birchWood, oakWood, pineWood, leaf;
 
     @Override
     public void initialize() {
@@ -35,7 +35,7 @@ public class TreeRasterizer implements WorldRasterizer{
         oakWood = CoreRegistry.get(BlockManager.class).getBlock("Core:OakTrunk");
         pineWood = CoreRegistry.get(BlockManager.class).getBlock("Core:PineTrunk");
         leaf = CoreRegistry.get(BlockManager.class).getBlock("Core:GreenLeaf");
-        stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
+        //stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
     }
 
     @Override

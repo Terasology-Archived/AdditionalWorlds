@@ -33,7 +33,7 @@ import static org.terasology.math.TeraMath.clamp;
 public class MountainsProvider implements ConfigurableFacetProvider {
 
     private Noise mountainNoise;
-    private MountainsConfiguration configuration = new MountainsConfiguration();
+    private IGTMountainsConfiguration configuration = new IGTMountainsConfiguration();
 
     @Override
     public void setSeed(long seed) {
@@ -72,10 +72,10 @@ public class MountainsProvider implements ConfigurableFacetProvider {
     @Override
     public void setConfiguration(Component configuration)
     {
-        this.configuration = (MountainsConfiguration)configuration;
+        this.configuration = (IGTMountainsConfiguration)configuration;
     }
 
-    private static class MountainsConfiguration implements Component {
+    private static class IGTMountainsConfiguration implements Component {
         @Range(min = 200, max = 500f, increment = 20f, precision = 1, description = "Mountain Height")
         private float mountainHeight = 400;
     }

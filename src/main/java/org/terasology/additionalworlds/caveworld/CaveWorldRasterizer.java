@@ -22,11 +22,9 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizerPlugin;
-import org.terasology.world.generator.plugin.RegisterPlugin;
+import org.terasology.world.generation.WorldRasterizer;
 
-@RegisterPlugin
-public class CaveWorldRasterizer implements WorldRasterizerPlugin {
+public class CaveWorldRasterizer implements WorldRasterizer {
 
     private Block ground;
     private Block lava;

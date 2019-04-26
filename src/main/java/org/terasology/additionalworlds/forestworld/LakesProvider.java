@@ -24,15 +24,13 @@ import org.terasology.utilities.procedural.Noise;
 import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
 import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProviderPlugin;
+import org.terasology.world.generation.FacetProvider;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Updates;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Updates(@Facet(SurfaceHeightFacet.class))
-public class LakesProvider implements FacetProviderPlugin {
+public class LakesProvider implements FacetProvider {
 
     private Noise lakeNoise;
 

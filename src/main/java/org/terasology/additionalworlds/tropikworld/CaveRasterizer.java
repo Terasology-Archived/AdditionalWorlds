@@ -22,14 +22,12 @@ import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizerPlugin;
-import org.terasology.world.generator.plugin.RegisterPlugin;
+import org.terasology.world.generation.WorldRasterizer;
 
 /**
  * Still need this rasterizer because just changing the density does not provide the correct effect with the default perlin generator
  */
-@RegisterPlugin
-public class CaveRasterizer implements WorldRasterizerPlugin {
+public class CaveRasterizer implements WorldRasterizer {
     String blockUri;
 
     public CaveRasterizer() {

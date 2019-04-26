@@ -25,17 +25,14 @@ import org.terasology.utilities.procedural.PerlinNoise;
 import org.terasology.utilities.procedural.SubSampledNoise;
 import org.terasology.world.generation.ConfigurableFacetProvider;
 import org.terasology.world.generation.Facet;
-import org.terasology.world.generation.FacetProviderPlugin;
 import org.terasology.world.generation.GeneratingRegion;
 import org.terasology.world.generation.Produces;
 import org.terasology.world.generation.Requires;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-@RegisterPlugin
 @Produces(LavalakeFacet.class)
 @Requires(@Facet(SurfaceHeightFacet.class))
-public class LavalakeFacetProvider implements ConfigurableFacetProvider, FacetProviderPlugin {
+public class LavalakeFacetProvider implements ConfigurableFacetProvider {
     private LavalakeFacetProviderConfiguration configuration = new LavalakeFacetProviderConfiguration();
 
     private Noise baseCaveNoise;
@@ -110,7 +107,7 @@ public class LavalakeFacetProvider implements ConfigurableFacetProvider, FacetPr
 
         private int octaves;
         private float[] spectralWeights;
-        private float scale;                // 1/sum of all weights
+        //private float scale;                // 1/sum of all weights
         private final Noise other;
 
         /**
@@ -157,13 +154,13 @@ public class LavalakeFacetProvider implements ConfigurableFacetProvider, FacetPr
             return result;// * scale;
         }
 
-        private static float computeScale(float[] spectralWeights) {
-            float sum = 0;
-            for (float weight : spectralWeights) {
-                sum += weight;
-            }
-            return 1.0f / sum;
-        }
+//        private static float computeScale(float[] spectralWeights) {
+//            float sum = 0;
+//            for (float weight : spectralWeights) {
+//                sum += weight;
+//            }
+//            return 1.0f / sum;
+//        }
 
         /**
          * @param octaves the number of octaves used for computation
@@ -229,7 +226,7 @@ public class LavalakeFacetProvider implements ConfigurableFacetProvider, FacetPr
                 spectralWeights[i] = (float) Math.pow(lacunarity, -persistence * i);
             }
 
-            scale = computeScale(spectralWeights);
+            //scale = computeScale(spectralWeights);
         }
     }
 

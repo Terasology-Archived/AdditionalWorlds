@@ -22,15 +22,11 @@ import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.CoreChunk;
 import org.terasology.world.generation.Region;
-import org.terasology.world.generation.WorldRasterizerPlugin;
+import org.terasology.world.generation.WorldRasterizer;
 import org.terasology.world.generation.facets.SeaLevelFacet;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
-import org.terasology.world.generator.plugin.RegisterPlugin;
 
-import java.util.Random;
-
-@RegisterPlugin
-public class LakesRasterizer implements WorldRasterizerPlugin {
+public class LakesRasterizer implements WorldRasterizer {
     private Block water;
 
     @Override
@@ -44,7 +40,6 @@ public class LakesRasterizer implements WorldRasterizerPlugin {
         SeaLevelFacet seaLevelFacet = chunkRegion.getFacet(SeaLevelFacet.class);
         int seaLevel = seaLevelFacet.getSeaLevel();
         for (Vector3i position : chunkRegion.getRegion()) {
-            Random r = new Random();
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
             if (position.y < seaLevel && position.y > surfaceHeight) {
                 chunk.setBlock(ChunkMath.calcBlockPos(position), water);
