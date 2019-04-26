@@ -10,12 +10,14 @@ Mostly contributed via [Google Code-In 2017](https://codein.withgoogle.com/archi
   ![Christmas World](preview/ChristmasWorld.jpg)
 - **Desert World**
   ![Desert World](preview/DesertWorld.png)
-- **Desolate Winters** ⚠️
+- **Desolate Winters**
   ![Desolate Winters](preview/DesolateWinters.jpg)
 - **End World**
+  ![End World](preview/EndWorld.png)
 - **Forest World**
   ![Forest World](preview/ForestWorld.png)
 - **I'm Getting Thirsty**
+  ![I'm Getting Thirsty](preview/ImGettingThirsty.png)
 - **Lava Land**
   ![Lava Land](preview/LavaLand.jpg)
 - **Lone Mountain**
