@@ -34,7 +34,7 @@ public class WaterBoxRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        glass = CoreRegistry.get(BlockManager.class).getBlock("Core:Glass");
+        glass = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Glass");
         water = CoreRegistry.get(BlockManager.class).getBlock("AdditionalWorlds:waterSides");
     }
 

@@ -36,7 +36,7 @@ public class LavalakeRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        lava = CoreRegistry.get(BlockManager.class).getBlock("Core:Lava");
+        lava = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Lava");
         BlockManager blockManager = CoreRegistry.get(BlockManager.class);
         air = blockManager.getBlock(BlockManager.AIR_ID);
     }

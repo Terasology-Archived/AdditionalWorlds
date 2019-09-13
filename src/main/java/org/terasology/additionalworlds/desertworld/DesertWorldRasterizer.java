@@ -15,7 +15,7 @@ public class DesertWorldRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        sand = CoreRegistry.get(BlockManager.class).getBlock("Core:Sand");
+        sand = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Sand");
     }
 
     @Override

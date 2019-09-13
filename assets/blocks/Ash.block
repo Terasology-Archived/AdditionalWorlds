@@ -1,4 +1,4 @@
 {
-	"basedOn": "core:soil",
+	"basedOn": "CoreAssets:soil",
 	"displayName": "Ash"
 }

@@ -15,7 +15,7 @@ public class BushRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        bush = CoreRegistry.get(BlockManager.class).getBlock("Core:DeadBush");
+        bush = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:DeadBush");
     }
 
     @Override

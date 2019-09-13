@@ -32,9 +32,9 @@ public class ThirstyWorldRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        hardStone = CoreRegistry.get(BlockManager.class).getBlock("Core:HardStone");
-        deadBush = CoreRegistry.get(BlockManager.class).getBlock("Core:DeadBush");
-        lava = CoreRegistry.get(BlockManager.class).getBlock("Core:Lava");
+        hardStone = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:HardStone");
+        deadBush = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:DeadBush");
+        lava = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Lava");
     }
 
     @Override
