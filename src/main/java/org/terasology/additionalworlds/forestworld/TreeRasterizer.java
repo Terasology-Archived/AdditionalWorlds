@@ -31,11 +31,11 @@ public class TreeRasterizer implements WorldRasterizer{
 
     @Override
     public void initialize() {
-        birchWood = CoreRegistry.get(BlockManager.class).getBlock("Core:BirchTrunk");
-        oakWood = CoreRegistry.get(BlockManager.class).getBlock("Core:OakTrunk");
-        pineWood = CoreRegistry.get(BlockManager.class).getBlock("Core:PineTrunk");
-        leaf = CoreRegistry.get(BlockManager.class).getBlock("Core:GreenLeaf");
-        //stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
+        birchWood = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:BirchTrunk");
+        oakWood = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:OakTrunk");
+        pineWood = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:PineTrunk");
+        leaf = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:GreenLeaf");
+        //stone = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Stone");
     }
 
     @Override

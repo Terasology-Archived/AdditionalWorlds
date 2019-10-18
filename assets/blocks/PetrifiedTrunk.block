@@ -1,5 +1,5 @@
 {
-    "basedOn": "core:rock",
+    "basedOn": "CoreAssets:rock",
     "displayName": "Petrified Log",
     "tiles": {
         "sides": "AdditionalWorlds:PetrifiedBark",

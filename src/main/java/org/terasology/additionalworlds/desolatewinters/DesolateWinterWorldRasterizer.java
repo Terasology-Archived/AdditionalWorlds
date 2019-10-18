@@ -38,10 +38,10 @@ public class DesolateWinterWorldRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        dirt = CoreRegistry.get(BlockManager.class).getBlock("Core:Dirt");
-        snow = CoreRegistry.get(BlockManager.class).getBlock("Core:Snow");
-        water = CoreRegistry.get(BlockManager.class).getBlock("Core:Water");
-        ice = CoreRegistry.get(BlockManager.class).getBlock("Core:Ice");
+        dirt = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Dirt");
+        snow = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Snow");
+        water = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Water");
+        ice = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Ice");
         thickSnow = CoreRegistry.get(BlockManager.class).getBlock("AdditionalWorlds:ThickSnow");
         rand = 0;
     }

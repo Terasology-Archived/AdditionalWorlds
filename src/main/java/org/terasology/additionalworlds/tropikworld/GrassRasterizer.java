@@ -29,7 +29,7 @@ public class GrassRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        tallGrass2 = CoreRegistry.get(BlockManager.class).getBlock("Core:TallGrass2");
+        tallGrass2 = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:TallGrass2");
     }
 
     @Override

@@ -1,17 +1,25 @@
 {
     "id" : "AdditionalWorlds",
-    "version" : "0.2.0-SNAPSHOT",
+    "version" : "0.2.1-SNAPSHOT",
     "author" : "",
     "displayName" : "AdditionalWorlds",
     "description" : "",
     "dependencies" : [
+        {
+            "id" : "CoreAssets",
+            "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "CoreBlocks",
+            "minVersion" : "1.0.0"
+        },
 		{
 			"id" : "Core",
-			"minVersion" : "2.0.0"
+			"minVersion" : "2.2.1"
 		},
 		{
 			"id" : "StructureTemplates",
-			"minVersion" : "0.3.0-SNAPSHOT"
+			"minVersion" : "0.3.1-SNAPSHOT"
 		},
 		{
 			"id" : "Fences",

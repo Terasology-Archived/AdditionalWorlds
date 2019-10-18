@@ -29,7 +29,7 @@ public class FloraRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        redFlower = CoreRegistry.get(BlockManager.class).getBlock("Core:RedFlower");
+        redFlower = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:RedFlower");
     }
 
     @Override

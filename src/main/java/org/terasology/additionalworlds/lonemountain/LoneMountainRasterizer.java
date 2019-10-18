@@ -38,10 +38,10 @@ public class LoneMountainRasterizer implements WorldRasterizer {
     @Override
     public void initialize() {
         BlockManager blockManager = CoreRegistry.get(BlockManager.class);
-        //dirt = blockManager.getBlock("Core:Dirt");
-        stone = blockManager.getBlock("core:stone");
-        grass = blockManager.getBlock("core:grass");
-        water = blockManager.getBlock("core:water");
+        //dirt = blockManager.getBlock("CoreBlocks:Dirt");
+        stone = blockManager.getBlock("CoreBlocks:Stone");
+        grass = blockManager.getBlock("CoreBlocks:Grass");
+        water = blockManager.getBlock("CoreBlocks:Water");
     }
 
     @Override

@@ -31,9 +31,9 @@ public class ForestWorldRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        grass = CoreRegistry.get(BlockManager.class).getBlock("Core:Grass");
-        mantleStone = CoreRegistry.get(BlockManager.class).getBlock("Core:MantleStone");
-        stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
+        grass = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Grass");
+        mantleStone = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:MantleStone");
+        stone = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Stone");
     }
 
     @Override
