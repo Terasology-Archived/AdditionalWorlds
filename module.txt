@@ -15,15 +15,15 @@
         },
 		{
 			"id" : "Core",
-			"minVersion" : "2.2.1"
+			"minVersion" : "3.0.0"
 		},
 		{
 			"id" : "StructureTemplates",
-			"minVersion" : "0.3.1-SNAPSHOT"
+			"minVersion" : "0.3.1"
 		},
 		{
 			"id" : "Fences",
-			"minVersion" : "0.1.1-SNAPSHOT"
+			"minVersion" : "0.1.1"
 		}],
     "serverSideOnly" : false
 }
