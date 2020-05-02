@@ -1,6 +1,6 @@
 {
     "id" : "AdditionalWorlds",
-    "version" : "0.2.1-SNAPSHOT",
+    "version" : "0.3.0",
     "author" : "",
     "displayName" : "AdditionalWorlds",
     "description" : "",
@@ -13,17 +13,15 @@
             "id" : "CoreBlocks",
             "minVersion" : "1.0.0"
         },
-		{
-			"id" : "Core",
-			"minVersion" : "3.0.0"
-		},
-		{
-			"id" : "StructureTemplates",
-			"minVersion" : "0.3.1"
-		},
-		{
-			"id" : "Fences",
-			"minVersion" : "0.1.1"
-		}],
-    "serverSideOnly" : false
+	{
+	    "id" : "StructureTemplates",
+	    "minVersion" : "0.3.1"
+	},
+	{
+	    "id" : "Fences",
+	    "minVersion" : "0.1.1"
+	}
+    ],
+    "serverSideOnly" : false,
+    "isWorld": true
 }
