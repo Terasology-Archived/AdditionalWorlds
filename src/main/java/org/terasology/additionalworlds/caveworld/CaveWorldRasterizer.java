@@ -31,8 +31,8 @@ public class CaveWorldRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        ground = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Stone");
-        lava = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Lava");
+        ground = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:Stone");
+        lava = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:Lava");
     }
 
     @Override

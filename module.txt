@@ -1,31 +1,15 @@
 {
-    "id" : "AdditionalWorlds",
-    "version" : "0.3.0",
-    "author" : "",
-    "displayName" : "AdditionalWorlds",
-    "description" : "",
-    "dependencies" : [
-        {
-            "id" : "CoreAssets",
-            "minVersion" : "1.0.0"
-        },
-        {
-            "id" : "CoreBlocks",
-            "minVersion" : "1.0.0"
-        },
-        {
-            "id" : "CoreWorlds",
-            "minVersion" : "1.0.0"
-        },
-        {
-            "id" : "StructureTemplates",
-            "minVersion" : "0.3.1"
-        },
-        {
-            "id" : "Fences",
-            "minVersion" : "0.1.1"
-        }
+    "id": "AdditionalWorlds",
+    "version": "1.0.0",
+    "author": "The Terasology Foundation",
+    "displayName": "AdditionalWorlds",
+    "description": "This module adds world generators for various worlds",
+    "dependencies": [
+        { "id": "CoreAssets", "minVersion": "1.0.0" },
+        { "id": "CoreWorlds", "minVersion": "1.0.0" },
+        { "id": "Fences", "minVersion": "0.1.1" },
+        { "id": "StructureTemplates", "minVersion": "0.3.1" }
     ],
-    "serverSideOnly" : false,
+    "serverSideOnly": false,
     "isWorld": true
 }

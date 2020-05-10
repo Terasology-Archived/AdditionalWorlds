@@ -15,8 +15,8 @@ public class CactusRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        cactus = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Cactus");
-        water = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Water");
+        cactus = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:Cactus");
+        water = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:Water");
     }
 
     @Override
