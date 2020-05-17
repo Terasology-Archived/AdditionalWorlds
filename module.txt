@@ -6,7 +6,7 @@
     "description": "This module adds world generators for various worlds",
     "dependencies": [
         { "id": "CoreAssets", "minVersion": "2.0.1" },
-        { "id": "CoreWorlds", "minVersion": "1.0.0" },
+        { "id": "CoreWorlds", "minVersion": "1.1.0" },
         { "id": "Fences", "minVersion": "0.1.1" },
         { "id": "StructureTemplates", "minVersion": "0.3.1" }
     ],
