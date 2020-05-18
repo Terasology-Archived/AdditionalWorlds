@@ -14,7 +14,7 @@ public class DeadBushRasterizer implements WorldRasterizer {
 
     @Override
     public void initialize() {
-        deadBush = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:DeadBush");
+        deadBush = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:DeadBush");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class DeadBushRasterizer implements WorldRasterizer {
             if (deadBushFacet.getWorld(block)
                 // Don't want bushes in water, now do we?
                 //Surely there's a more generic way we can make sure not to place a bush on uninhabitable blocks... -Q
-                && !chunk.getBlock(ChunkMath.calcBlockPos(block.addY(-1))).getURI().toString().toLowerCase().equals("coreblocks:water")) {
+                && !chunk.getBlock(ChunkMath.calcBlockPos(block.addY(-1))).getURI().toString().toLowerCase().equals("coreassets:water")) {
                 block.addY(1);
                 chunk.setBlock(ChunkMath.calcBlockPos(block), deadBush);
             }

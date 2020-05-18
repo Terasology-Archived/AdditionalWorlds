@@ -31,9 +31,9 @@ public class ChristmasWorldRasterizer implements WorldRasterizer {
     private Block flower;
     @Override
     public void initialize() {
-        ice = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:Ice");
-        leaf = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:RedLeaf");
-        flower = CoreRegistry.get(BlockManager.class).getBlock("CoreBlocks:GlowbellBloom");
+        ice = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:Ice");
+        leaf = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:RedLeaf");
+        flower = CoreRegistry.get(BlockManager.class).getBlock("CoreAssets:GlowbellBloom");
     }
 
     @Override
